@@ -152,50 +152,37 @@
   <footer>&copy; 2025 pandhu</footer>
 
   <!-- 🎶 Musik Latar -->
-  <audio id="bg-music" src="https://files.catbox.moe/3wms4l.mp3" loop></audio>
+  <!-- Ganti link musik dengan link valid -->
+<audio id="bg-music" src="https://cdn.pixabay.com/download/audio/2023/06/26/audio_f7f39e3813.mp3?filename=space-ambient-145038.mp3" loop></audio>
 
-  <script>
-    const audio = document.getElementById('bg-music');
-    const muteBtn = document.getElementById('mute-btn');
-    const clickNotice = document.getElementById('click-notice');
+<script>
+  const audio = document.getElementById('bg-music');
+  const muteBtn = document.getElementById('mute-btn');
+  const clickNotice = document.getElementById('click-notice');
 
-    // Efek bintang jatuh
-    function createStar() {
-      const star = document.createElement('div');
-      star.classList.add('shooting-star');
-      star.style.left = Math.random() * window.innerWidth + 'px';
-      document.body.appendChild(star);
-      setTimeout(() => {
-        star.remove();
-      }, 1500);
-    }
+  // Tampilkan notice
+  window.addEventListener('load', () => {
+    clickNotice.style.display = 'block';
+  });
 
-    setInterval(createStar, 800);
-
-    // Tombol Mute/Unmute
-    muteBtn.addEventListener('click', () => {
-      if (audio.muted) {
-        audio.muted = false;
-        muteBtn.textContent = '🔊';
-      } else {
-        audio.muted = true;
-        muteBtn.textContent = '🔇';
-      }
+  // Play musik setelah klik pertama
+  const startAudio = () => {
+    audio.play().then(() => {
+      clickNotice.style.display = 'none';
+    }).catch((e) => {
+      console.log('Autoplay error:', e);
     });
+  };
 
-    // Play musik setelah klik pertama
-    document.body.addEventListener('click', function () {
-      if (audio.paused) {
-        audio.play().catch(() => {});
-      }
-      clickNotice.style.display = 'none'; // Sembunyikan notifikasi
-    }, { once: true });
+  document.body.addEventListener('click', startAudio, { once: true });
 
-    // Tampilkan notice pas awal
-    window.addEventListener('load', () => {
-      clickNotice.style.display = 'block';
-    });
-  </script>
+  // Tombol Mute/Unmute
+  muteBtn.addEventListener('click', () => {
+    audio.muted = !audio.muted;
+    muteBtn.textContent = audio.muted ? '🔇' : '🔊';
+  });
+</script>
+
 
 </body>
 </html>
