@@ -94,6 +94,23 @@
       opacity: 0;
     }
   }
+
+  /* 🔇 Tombol Mute */
+  #mute-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    z-index: 10;
+  }
   </style>
 </head>
 <body>
@@ -108,6 +125,44 @@
   <a class="link-button" href="mailto:pandhurahman430@gmail.com" target="_blank">Email</a>
 
   <footer>&copy; 2025 pandhu</footer>
+
+  <!-- 🎶 Musik -->
+  <audio id="bg-music" autoplay loop hidden>
+    <source src="https://cdn.pixabay.com/download/audio/2022/08/26/audio_c366c70c45.mp3" type="audio/mp3">
+    Browser kamu tidak mendukung audio.
+  </audio>
+
+  <!-- 🔇 Tombol Mute -->
+  <button id="mute-btn">🔊</button>
+
+  <script>
+    // 🔇🔊 Fungsi Mute / Unmute
+    const audio = document.getElementById('bg-music');
+    const muteBtn = document.getElementById('mute-btn');
+
+    muteBtn.addEventListener('click', () => {
+      if (audio.muted) {
+        audio.muted = false;
+        muteBtn.textContent = '🔊';
+      } else {
+        audio.muted = true;
+        muteBtn.textContent = '🔇';
+      }
+    });
+
+    // 🌠 Efek Bintang Jatuh
+    function createStar() {
+      const star = document.createElement('div');
+      star.classList.add('shooting-star');
+      star.style.left = Math.random() * window.innerWidth + 'px';
+      document.body.appendChild(star);
+      setTimeout(() => {
+        star.remove();
+      }, 1500);
+    }
+
+    setInterval(createStar, 800);
+  </script>
 
 </body>
 </html>
