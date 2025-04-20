@@ -109,25 +109,5 @@
 
   <footer>&copy; 2025 pandhu</footer>
 
-  <!-- 🎵 Musik Latar Space -->
-  <audio autoplay loop hidden>
-    <source src="https://cdn.pixabay.com/download/audio/2022/08/26/audio_c366c70c45.mp3" type="audio/mp3">
-    Browser kamu tidak mendukung audio.
-  </audio>
-
-  <!-- 🌠 Animasi Bintang Jatuh -->
-  <script>
-    function createStar() {
-      const star = document.createElement('div');
-      star.classList.add('shooting-star');
-      star.style.left = Math.random() * window.innerWidth + 'px';
-      document.body.appendChild(star);
-      setTimeout(() => {
-        star.remove();
-      }, 1500);
-    }
-    setInterval(createStar, 1000);
-  </script>
-
 </body>
 </html>
