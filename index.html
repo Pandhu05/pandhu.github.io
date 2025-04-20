@@ -5,184 +5,97 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Link Saya</title>
   <style>
-  body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background-image: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px 20px;
-    color: white;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .profile-img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid #fff;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-    margin-bottom: 20px;
-  }
-
-  h1 {
-    margin: 10px 0 5px;
-    font-size: 24px;
-    text-shadow: 0 0 5px rgba(0,0,0,0.6);
-  }
-
-  p {
-    margin: 0 0 30px;
-    font-size: 14px;
-    text-shadow: 0 0 4px rgba(0,0,0,0.5);
-  }
-
-  .link-button {
-    display: block;
-    width: 100%;
-    max-width: 320px;
-    text-align: center;
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-    padding: 14px;
-    margin: 10px 0;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background 0.3s;
-    border: 1px solid rgba(255,255,255,0.3);
-  }
-
-  .link-button:hover {
-    background: rgba(255, 255, 255, 0.2);
-  }
-
-  footer {
-    margin-top: 40px;
-    font-size: 12px;
-    color: #ccc;
-    text-shadow: 0 0 2px black;
-  }
-
-  /* 🌠 Efek Bintang Jatuh */
-  .shooting-star {
-    position: fixed;
-    width: 2px;
-    height: 80px;
-    background: white;
-    opacity: 0.7;
-    top: -100px;
-    left: 0;
-    transform: rotate(45deg);
-    animation: fall 1.5s linear forwards;
-    z-index: 0;
-  }
-
-  @keyframes fall {
-    0% {
-      transform: translate(0, 0) rotate(45deg);
-      opacity: 1;
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-image: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      color: white;
+      overflow: hidden;
+      position: relative;
     }
-    100% {
-      transform: translate(600px, 600px) rotate(45deg);
-      opacity: 0;
+
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      margin-bottom: 20px;
     }
-  }
 
-  /* 🎶 Tombol Mute/Unmute */
-  #mute-btn {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: rgba(0,0,0,0.6);
-    border: none;
-    border-radius: 50%;
-    color: white;
-    font-size: 24px;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    z-index: 1000;
-  }
+    h1 {
+      margin: 10px 0 5px;
+      font-size: 24px;
+      text-shadow: 0 0 5px rgba(0,0,0,0.6);
+    }
 
-  /* 📢 Notifikasi klik untuk musik */
-  #click-notice {
-    position: fixed;
-    top: 80px;
-    right: 20px;
-    background: rgba(0,0,0,0.7);
-    padding: 10px 15px;
-    border-radius: 8px;
-    font-size: 12px;
-    color: white;
-    display: none;
-    z-index: 999;
-    animation: fadeInOut 3s ease forwards;
-  }
+    p {
+      margin: 0 0 30px;
+      font-size: 14px;
+      text-shadow: 0 0 4px rgba(0,0,0,0.5);
+    }
 
-  @keyframes fadeInOut {
-    0% { opacity: 0; transform: translateY(-10px); }
-    10% { opacity: 1; transform: translateY(0); }
-    90% { opacity: 1; transform: translateY(0); }
-    100% { opacity: 0; transform: translateY(-10px); }
-  }
-  </style>
-</head>
+    .link-button {
+      display: block;
+      width: 100%;
+      max-width: 320px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 14px;
+      margin: 10px 0;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
 
-<body>
+    .link-button:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
 
-  <button id="mute-btn">🔊</button>
-  <div id="click-notice">Klik di mana saja untuk memulai musik 🎶</div>
+    footer {
+      margin-top: 40px;
+      font-size: 12px;
+      color: #ccc;
+      text-shadow: 0 0 2px black;
+    }
 
-  <img class="profile-img" src="https://i.imgur.com/wD7OcVF.jpg" alt="Foto Profil">
-  <h1>Rahmanhidayatur</h1>
-  <p>Apalah Apalah Apalah Apalah</p>
+    .shooting-star {
+      position: fixed;
+      width: 2px;
+      height: 80px;
+      background: white;
+      opacity: 0.7;
+      top: -100px;
+      left: 0;
+      transform: rotate(45deg);
+      animation: fall 1.5s linear forwards;
+      z-index: 0;
+    }
 
-  <a class="link-button" href="https://www.instagram.com/_pnndhu/" target="_blank">Instagram</a>
-  <a class="link-button" href="https://wa.me/6283114197803" target="_blank">WhatsApp</a>
-  <a class="link-button" href="https://www.youtube.com/@ziaoftpan9963" target="_blank">YouTube</a>
-  <a class="link-button" href="mailto:pandhurahman430@gmail.com" target="_blank">Email</a>
+    @keyframes fall {
+      0% { transform: translate(0, 0) rotate(45deg); opacity: 1; }
+      100% { transform: translate(600px, 600px) rotate(45deg); opacity: 0; }
+    }
 
-  <footer>&copy; 2025 pandhu</footer>
-
-  <!-- 🎶 Musik Latar -->
-  <!-- Ganti link musik dengan link valid -->
-<audio id="bg-music" src="https://cdn.pixabay.com/download/audio/2023/06/26/audio_f7f39e3813.mp3?filename=space-ambient-145038.mp3" loop></audio>
-
-<script>
-  const audio = document.getElementById('bg-music');
-  const muteBtn = document.getElementById('mute-btn');
-  const clickNotice = document.getElementById('click-notice');
-
-  // Tampilkan notice
-  window.addEventListener('load', () => {
-    clickNotice.style.display = 'block';
-  });
-
-  // Play musik setelah klik pertama
-  const startAudio = () => {
-    audio.play().then(() => {
-      clickNotice.style.display = 'none';
-    }).catch((e) => {
-      console.log('Autoplay error:', e);
-    });
-  };
-
-  document.body.addEventListener('click', startAudio, { once: true });
-
-  // Tombol Mute/Unmute
-  muteBtn.addEventListener('click', () => {
-    audio.muted = !audio.muted;
-    muteBtn.textContent = audio.muted ? '🔇' : '🔊';
-  });
-</script>
-
-
-</body>
-</html>
+    #mute-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(0,0,0,0.6);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 24px;
+      width: 50px;
+      height:
