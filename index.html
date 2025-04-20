@@ -29,21 +29,18 @@
     border: 4px solid #fff;
     box-shadow: 0 4px 12px rgba(0,0,0,0.5);
     margin-bottom: 20px;
-    z-index: 1;
   }
 
   h1 {
     margin: 10px 0 5px;
     font-size: 24px;
     text-shadow: 0 0 5px rgba(0,0,0,0.6);
-    z-index: 1;
   }
 
   p {
     margin: 0 0 30px;
     font-size: 14px;
     text-shadow: 0 0 4px rgba(0,0,0,0.5);
-    z-index: 1;
   }
 
   .link-button {
@@ -60,7 +57,6 @@
     font-weight: bold;
     transition: background 0.3s;
     border: 1px solid rgba(255,255,255,0.3);
-    z-index: 1;
   }
 
   .link-button:hover {
@@ -72,7 +68,6 @@
     font-size: 12px;
     color: #ccc;
     text-shadow: 0 0 2px black;
-    z-index: 1;
   }
 
   /* 🌠 Efek Bintang Jatuh */
@@ -100,46 +95,50 @@
     }
   }
 
-  /* 🔇 Tombol mute */
+  /* 🎶 Tombol Mute/Unmute */
   #mute-btn {
     position: fixed;
     top: 20px;
     right: 20px;
-    background: rgba(0,0,0,0.5);
-    color: white;
+    background: rgba(0,0,0,0.6);
     border: none;
-    padding: 10px;
     border-radius: 50%;
-    font-size: 18px;
+    color: white;
+    font-size: 24px;
+    width: 50px;
+    height: 50px;
     cursor: pointer;
-    z-index: 2;
+    z-index: 1000;
   }
 
-  /* 🎶 Notifikasi klik */
+  /* 📢 Notifikasi klik untuk musik */
   #click-notice {
     position: fixed;
     top: 80px;
     right: 20px;
-    background: rgba(0,0,0,0.5);
-    color: white;
-    padding: 8px 12px;
+    background: rgba(0,0,0,0.7);
+    padding: 10px 15px;
     border-radius: 8px;
-    font-size: 14px;
-    z-index: 2;
-    animation: blink 1s infinite;
+    font-size: 12px;
+    color: white;
+    display: none;
+    z-index: 999;
+    animation: fadeInOut 3s ease forwards;
   }
 
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+  @keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(-10px); }
+    10% { opacity: 1; transform: translateY(0); }
+    90% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-10px); }
   }
-
   </style>
 </head>
+
 <body>
 
-  <button id="mute-btn">🔇</button>
-  <div id="click-notice">Klik di mana saja untuk mulai musik 🎶</div>
+  <button id="mute-btn">🔊</button>
+  <div id="click-notice">Klik di mana saja untuk memulai musik 🎶</div>
 
   <img class="profile-img" src="https://i.imgur.com/wD7OcVF.jpg" alt="Foto Profil">
   <h1>Rahmanhidayatur</h1>
@@ -152,17 +151,15 @@
 
   <footer>&copy; 2025 pandhu</footer>
 
-  <!-- 🎵 Musik Latar -->
-  <audio id="bg-music" loop>
-    <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Komiku/Its_time_for_adventure/Komiku_-_11_-_Beyond_the_Stars.mp3" type="audio/mp3">
-  </audio>
+  <!-- 🎶 Musik Latar -->
+  <audio id="bg-music" src="https://files.catbox.moe/3wms4l.mp3" loop></audio>
 
   <script>
     const audio = document.getElementById('bg-music');
     const muteBtn = document.getElementById('mute-btn');
     const clickNotice = document.getElementById('click-notice');
 
-    // 🌠 Efek Bintang Jatuh
+    // Efek bintang jatuh
     function createStar() {
       const star = document.createElement('div');
       star.classList.add('shooting-star');
@@ -175,7 +172,7 @@
 
     setInterval(createStar, 800);
 
-    // 🔇 Tombol mute / unmute
+    // Tombol Mute/Unmute
     muteBtn.addEventListener('click', () => {
       if (audio.muted) {
         audio.muted = false;
@@ -186,13 +183,18 @@
       }
     });
 
-    // ✅ Play musik setelah klik user
+    // Play musik setelah klik pertama
     document.body.addEventListener('click', function () {
       if (audio.paused) {
         audio.play().catch(() => {});
-        clickNotice.style.display = 'none'; // Sembunyikan notice
       }
-    }, { once: true }); // Hanya 1x
+      clickNotice.style.display = 'none'; // Sembunyikan notifikasi
+    }, { once: true });
+
+    // Tampilkan notice pas awal
+    window.addEventListener('load', () => {
+      clickNotice.style.display = 'block';
+    });
   </script>
 
 </body>
