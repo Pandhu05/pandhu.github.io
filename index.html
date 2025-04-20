@@ -21,25 +21,6 @@
     position: relative;
   }
 
-  /* 🌟 Efek Bintang Jatuh */
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: url('https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif');
-    background-size: cover;
-    opacity: 0.2;
-    z-index: -1;
-    animation: moveStars 100s linear infinite;
-  }
-
-  @keyframes moveStars {
-    from { background-position: 0 0; }
-    to { background-position: 10000px 10000px; }
-  }
-
   .profile-img {
     width: 120px;
     height: 120px;
@@ -88,20 +69,11 @@
     color: #ccc;
     text-shadow: 0 0 2px black;
   }
-</style>
-</head>
-<body>
 
-  <img class="profile-img" src="https://i.imgur.com/wD7OcVF.jpg" alt="Foto Profil">
-  <h1>Rahmanhidayatur</h1>
-  <p>Apalah Apalah Apalah Apalah</p>
-
-  <a class="link-button" href="https://www.instagram.com/_pnndhu/" target="_blank">Instagram</a>
-  <a class="link-button" href="https://wa.me/6283114197803" target="_blank">WhatsApp</a>
-  <a class="link-button" href="https://www.youtube.com/@ziaoftpan9963" target="_blank">YouTube</a>
-  <a class="link-button" href="mailto:pandhurahman430@gmail.com" target="_blank">Email</a>
-
-  <footer>&copy; 2025 pandhu</footer>
-
-</body>
-</html>
+  /* 🌠 Efek Bintang Jatuh */
+  .shooting-star {
+    position: fixed;
+    width: 2px;
+    height: 80px;
+    background: white;
+    opacity
