@@ -98,4 +98,79 @@
       color: white;
       font-size: 24px;
       width: 50px;
-      height:
+      height: 50px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    #click-notice {
+      position: fixed;
+      top: 80px;
+      right: 20px;
+      background: rgba(0,0,0,0.7);
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-size: 12px;
+      color: white;
+      display: none;
+      z-index: 999;
+      animation: fadeInOut 3s ease forwards;
+    }
+
+    @keyframes fadeInOut {
+      0% { opacity: 0; transform: translateY(-10px); }
+      10% { opacity: 1; transform: translateY(0); }
+      90% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-10px); }
+    }
+  </style>
+</head>
+
+<body>
+  <button id="mute-btn">🔊</button>
+  <div id="click-notice">Klik di mana saja untuk memulai musik 🎶</div>
+
+  <img class="profile-img" src="https://i.imgur.com/wD7OcVF.jpg" alt="Foto Profil">
+  <h1>Rahmanhidayatur</h1>
+  <p>Apalah Apalah Apalah Apalah</p>
+
+  <a class="link-button" href="https://www.instagram.com/_pnndhu/" target="_blank">Instagram</a>
+  <a class="link-button" href="https://wa.me/6283114197803" target="_blank">WhatsApp</a>
+  <a class="link-button" href="https://www.youtube.com/@ziaoftpan9963" target="_blank">YouTube</a>
+  <a class="link-button" href="mailto:pandhurahman430@gmail.com" target="_blank">Email</a>
+
+  <footer>&copy; 2025 pandhu</footer>
+
+  <!-- 🎶 Musik Latar -->
+  <audio id="bg-music" src="https://cdn.pixabay.com/download/audio/2023/06/26/audio_f7f39e3813.mp3?filename=space-ambient-145038.mp3" loop></audio>
+
+  <script>
+    const audio = document.getElementById('bg-music');
+    const muteBtn = document.getElementById('mute-btn');
+    const clickNotice = document.getElementById('click-notice');
+
+    // Tampilkan notifikasi
+    window.addEventListener('load', () => {
+      clickNotice.style.display = 'block';
+    });
+
+    // Aktifkan musik setelah interaksi user
+    const startAudio = () => {
+      audio.volume = 0.4; // volume disesuaikan
+      audio.play().then(() => {
+        clickNotice.style.display = 'none';
+      }).catch((err) => {
+        console.log("Autoplay blocked:", err);
+      });
+    };
+
+    document.body.addEventListener('click', startAudio, { once: true });
+
+    // Tombol Mute / Unmute
+    muteBtn.addEventListener('click', () => {
+      audio.muted = !audio.muted;
+      muteBtn.textContent = audio.muted ? '🔇' : '🔊';
+    });
+  </script>
+</body>
+</html>
