@@ -17,6 +17,27 @@
     align-items: center;
     padding: 40px 20px;
     color: white;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* 🌟 Efek Bintang Jatuh */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url('https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif');
+    background-size: cover;
+    opacity: 0.2;
+    z-index: -1;
+    animation: moveStars 100s linear infinite;
+  }
+
+  @keyframes moveStars {
+    from { background-position: 0 0; }
+    to { background-position: 10000px 10000px; }
   }
 
   .profile-img {
@@ -68,7 +89,6 @@
     text-shadow: 0 0 2px black;
   }
 </style>
-  
 </head>
 <body>
 
