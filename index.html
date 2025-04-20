@@ -76,4 +76,58 @@
     width: 2px;
     height: 80px;
     background: white;
-    opacity
+    opacity: 0.7;
+    top: -100px;
+    left: 0;
+    transform: rotate(45deg);
+    animation: fall 1.5s linear forwards;
+    z-index: 0;
+  }
+
+  @keyframes fall {
+    0% {
+      transform: translate(0, 0) rotate(45deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(600px, 600px) rotate(45deg);
+      opacity: 0;
+    }
+  }
+  </style>
+</head>
+<body>
+
+  <img class="profile-img" src="https://i.imgur.com/wD7OcVF.jpg" alt="Foto Profil">
+  <h1>Rahmanhidayatur</h1>
+  <p>Apalah Apalah Apalah Apalah</p>
+
+  <a class="link-button" href="https://www.instagram.com/_pnndhu/" target="_blank">Instagram</a>
+  <a class="link-button" href="https://wa.me/6283114197803" target="_blank">WhatsApp</a>
+  <a class="link-button" href="https://www.youtube.com/@ziaoftpan9963" target="_blank">YouTube</a>
+  <a class="link-button" href="mailto:pandhurahman430@gmail.com" target="_blank">Email</a>
+
+  <footer>&copy; 2025 pandhu</footer>
+
+  <!-- 🎵 Musik Latar Space -->
+  <audio autoplay loop hidden>
+    <source src="https://cdn.pixabay.com/download/audio/2022/08/26/audio_c366c70c45.mp3" type="audio/mp3">
+    Browser kamu tidak mendukung audio.
+  </audio>
+
+  <!-- 🌠 Animasi Bintang Jatuh -->
+  <script>
+    function createStar() {
+      const star = document.createElement('div');
+      star.classList.add('shooting-star');
+      star.style.left = Math.random() * window.innerWidth + 'px';
+      document.body.appendChild(star);
+      setTimeout(() => {
+        star.remove();
+      }, 1500);
+    }
+    setInterval(createStar, 1000);
+  </script>
+
+</body>
+</html>
